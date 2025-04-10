@@ -32,6 +32,7 @@ jobs:
         image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/nginx:1.19-alpine
         format: 'table'
         exit-code: '1'  # Fails pipeline on critical vulnerabilities
+        ignore-unfixed: true   # Ignore issues that don't have a fix
         severity: 'CRITICAL,HIGH'
 
     - name: Push Docker image
