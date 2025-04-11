@@ -9,5 +9,6 @@ RUN mkdir -p /var/cache/nginx/client_temp && \
 # Let it fall back to default USER nginx set by base image
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+# Tell nginx to write pid to /tmp to avoid /var/run permission error
+CMD ["nginx", "-g", "pid /tmp/nginx.pid; daemon off;"]
 
