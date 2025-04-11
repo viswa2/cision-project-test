@@ -52,5 +52,5 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f k8s/nginx-deployment.yaml
+        kubectl apply -f cision-project-test/k8s/nginx-deployment.yaml
 
