@@ -13,15 +13,13 @@ spec:
         app: nginx
     spec:
       containers:
-        - name: nginx
-          image: mekala/nginx:1.19-alpine
-          ports:
-            - containerPort: 8080
-          volumeMounts:
-            - name: nginx-cache
-              mountPath: /var/cache/nginx
-          volumes:
-            - name: nginx-cache
-              emptyDir: {}
-
-
+      - name: nginx
+        image: mekala/nginx:1.19-alpine
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: nginx-cache
+          mountPath: /var/cache/nginx
+      volumes:
+      - name: nginx-cache
+        emptyDir: {}
