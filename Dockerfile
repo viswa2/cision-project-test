@@ -1,13 +1,14 @@
 FROM nginx:1.19-alpine
 
-# Temporarily switch to root for the fix
+# Ensure directories are writable by the nginx user
 USER root
 
-RUN mkdir -p /var/cache/nginx/client_temp && \
-    chown -R nginx:nginx /var/cache/nginx
+# Fix /var/cache/nginx and /var/run permissions
+RUN mkdir -p /var/cache/nginx /var/run \
+    && chown -R nginx:nginx /var/cache/nginx /var/run
 
-# Override pid path
-ENV NGINX_PID_PATH=/tmp/nginx.pid    
+# Default nginx user from base image
+USER nginx   
 
 # Let it fall back to default USER nginx set by base image
 EXPOSE 8080
