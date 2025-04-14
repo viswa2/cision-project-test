@@ -35,3 +35,5 @@ grep 'GET' cleaned.log > get_requests.log
 4. Count occurrences of each status code using awk, sort, and uniq
 
 awk '{print $9}' cleaned.log | sort | uniq -c | sort -nr
+
+`Note:` Remaining questions i don't have much programming knowledge, but i have started running python now, will start writing python code soon.
