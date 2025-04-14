@@ -45,12 +45,16 @@ jobs:
         chmod +x ./kubectl
         sudo mv ./kubectl /usr/local/bin/kubectl
 
-    - name: Set up kubeconfig
-      run: |
-        export KUBECONFIG=/home/ubuntu/.kube/config
+    - name: Ensure kubeconfig is up to date
+      run: | 
+        /usr/local/bin/minikube update-context 
+
+    - name: Verify cluster connectivity
+      run: kubectl get nodes      
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl delete -f k8s/deployment.yaml
+        export KUBECONFIG=/home/ubuntu/.kube/config
+        kubectl delete -f k8s/deployment.yaml || true
         kubectl apply -f k8s/deployment.yaml
 
