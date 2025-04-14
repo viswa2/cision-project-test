@@ -24,16 +24,21 @@ Choose or create a text manipulation problem that involves using awk, sed, tr, a
 
 sed 's/["\[\]]//g' access.log > cleaned.log
 
-2. Extract IP and HTTP status code using awk
+2: Extract IP and HTTP status code using awk
 
 awk '{print $1, $9}' cleaned.log
 
-3. Filter only GET requests using grep
+3: Filter only GET requests using grep
 
 grep 'GET' cleaned.log > get_requests.log
 
-4. Count occurrences of each status code using awk, sort, and uniq
+4: Count occurrences of each status code using awk, sort, and uniq
 
 awk '{print $9}' cleaned.log | sort | uniq -c | sort -nr
+
+5. Text Manipulation with an Object Orientated Programming Language
+Solve the text manipulation problem from the previous question using any Object Orientated Programming language of your choice. Provide a clear and well-documented solution.
+
+`Ans:` Added the code into `test-manipulation-shell-script/log-praser.sh`
 
 `Note:` Remaining questions i don't have much programming knowledge, but i have started running python now, will start writing python code soon.
