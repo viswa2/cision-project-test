@@ -47,10 +47,7 @@ jobs:
 
     - name: Ensure kubeconfig is up to date
       run: | 
-        /usr/local/bin/minikube update-context 
-
-    - name: Verify cluster connectivity
-      run: kubectl get nodes      
+        /usr/local/bin/minikube update-context     
 
     - name: Deploy to Kubernetes
       run: |
