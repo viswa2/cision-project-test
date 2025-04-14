@@ -47,8 +47,7 @@ jobs:
 
     - name: Set up kubeconfig
       run: |
-        mkdir -p ~/.kube
-        echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > ~/.kube/config
+        export KUBECONFIG=/home/ubuntu/.kube/config
 
     - name: Deploy to Kubernetes
       run: |

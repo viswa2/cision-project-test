@@ -17,13 +17,3 @@ spec:
         image: mekala/nginx:1.19-alpine
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - name: cache
-          mountPath: /var/cache/nginx
-        - name: run
-          mountPath: /var/run
-      volumes:
-      - name: cache
-        emptyDir: {}
-      - name: run
-        emptyDir: {}
