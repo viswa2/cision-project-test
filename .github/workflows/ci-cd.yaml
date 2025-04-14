@@ -45,14 +45,13 @@ jobs:
         chmod +x ./kubectl
         sudo mv ./kubectl /usr/local/bin/kubectl
 
-    # - name: Setup Kubeconfig
-    #   run: | 
-    #     mkdir -p ~/.kube
-    #     echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > ~/.kube/config
+    - name: Setup Kubeconfig
+      run: | 
+        mkdir -p ~/.kube
+        echo "${{ secrets.KUBECONFIG_DATA }}" | base64 -d > ~/.kube/config
 
     - name: Deploy to Kubernetes
       run: |
-        export KUBECONFIG=/home/ubuntu/.kube/config
         kubectl delete -f k8s/deployment.yaml || true
         kubectl apply -f k8s/deployment.yaml
 
